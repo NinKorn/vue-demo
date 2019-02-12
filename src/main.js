@@ -16,6 +16,10 @@ import 'mint-ui/lib/style.css'
 // 将 MintUI 安装到 Vue 中
 Vue.use(MintUI) // 把所有的组件，注册为全局的组件
 
+//引入vue-resource
+import vueResource from 'vue-resource'
+Vue.use(vueResource)
+
 
 Vue.config.productionTip = false
 
