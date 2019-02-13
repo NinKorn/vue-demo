@@ -52,6 +52,7 @@ export default {
 
 <style lang="less" scoped>
 .template {
+    padding: 5px 0;
   .comment-title {
     font-size: 18px;
     font-weight: 700;
