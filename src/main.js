@@ -29,6 +29,13 @@ Vue.filter('getTime',(data,options = 'YYYY-MM-DD hh-mm-ss') => {
 Vue.http.options.root = 'http://lovegf.cn:8899/';
 
 
+import comment from './components/comment'
+//定义全局评论组件
+Vue.component('comment', comment)
+// Vue.component('comment-box',{
+//   component:comment
+// });
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
