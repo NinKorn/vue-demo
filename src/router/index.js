@@ -15,7 +15,7 @@ export default new Router({
     {path: '/member',component: memberComponents},
     {path: '/shopcar',component: shopcarComponents},
     {path: '/search',component: searchComponents},
-    {path: '/newsList',component: newsListComponents}
+    {path: '/home/newsList',component: newsListComponents}
   ],
   linkActiveClass:'mui-active'
 
