@@ -2,16 +2,16 @@
   <div>
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
-        <a href="javascript:;">
+        <router-link :to="'/home/newsInfo/'+ item.id">
           <img class="mui-media-object mui-pull-left" :src="item.img_url">
           <div class="mui-media-body">
-            {{item.title}}
+            <h1>{{item.title}}</h1>
             <p>
               <span class="mui-ellipsis">发表时间:{{item.add_time | getTime }}</span>
               <span>点击：{{item.click}}次</span>
             </p>
           </div>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     getNewsList() {
-      this.$http.get("http://lovegf.cn:8899/api/getnewslist")
+      this.$http.get("api/getnewslist")
       .then(res => {
         this.newslist = res.body.message;
       });
@@ -40,8 +40,10 @@ export default {
 
 <style lang="less" scoped>
   .mui-media-body {
-    font-weight: 600;
-    font-size: 14px;
+    h1 {
+      font-weight: 600;
+      font-size: 14px;
+    }
     p {
       font-size: 12px;
       color: #226aff;

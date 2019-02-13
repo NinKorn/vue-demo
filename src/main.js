@@ -26,6 +26,8 @@ Vue.filter('getTime',(data,options = 'YYYY-MM-DD hh-mm-ss') => {
   return moment().format(options)
 })
 
+Vue.http.options.root = 'http://lovegf.cn:8899/';
+
 
 Vue.config.productionTip = false
 

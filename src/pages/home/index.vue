@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     getBanner() {
-      this.$http.get("http://lovegf.cn:8899/api/getlunbo").then(res => {
+      this.$http.get("api/getlunbo").then(res => {
         console.log(res.body);
         this.bannerImgs = res.body.message;
       });
