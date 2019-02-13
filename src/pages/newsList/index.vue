@@ -7,7 +7,7 @@
           <div class="mui-media-body">
             {{item.title}}
             <p>
-              <span class="mui-ellipsis">发表时间:{{item.add_time}}</span>
+              <span class="mui-ellipsis">发表时间:{{item.add_time | getTime }}</span>
               <span>点击：{{item.click}}次</span>
             </p>
           </div>
@@ -42,6 +42,12 @@ export default {
   .mui-media-body {
     font-weight: 600;
     font-size: 14px;
+    p {
+      font-size: 12px;
+      color: #226aff;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 </style>
 
