@@ -11,7 +11,7 @@ import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 
 //把所有的mint-ui组件都导入进来
-import MintUI from 'mint-ui' 
+import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI) // 把所有的组件，注册为全局的组件
 
@@ -22,7 +22,7 @@ Vue.use(vueResource)
 //引入moment时间处理插件
 import moment from 'moment'
 // 全局过滤器处理时间
-Vue.filter('getTime',(data,options = 'YYYY-MM-DD hh-mm-ss') => {
+Vue.filter('getTime', (data, options = 'YYYY-MM-DD hh-mm-ss') => {
   return moment().format(options)
 })
 
