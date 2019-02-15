@@ -2,8 +2,8 @@
   <div class="template">
     <h3 class="comment-title">发表评论</h3>
     <hr>
-    <textarea maxlength="150" placeholder="输入内容请不要超过150字"></textarea>
-    <mt-button size="large" type="primary">发表评论</mt-button>
+    <textarea maxlength="150" placeholder="输入内容请不要超过150字" v-model="commentContent"></textarea>
+    <mt-button size="large" type="primary" @click="postComment">发表评论</mt-button>
     <div class="comment-list">
       <ul>
         <li v-for="(item,index) in commentList" :key="index">
@@ -24,7 +24,8 @@ export default {
   data() {
     return {
       commentList: [],
-      pageindex: 1
+      pageindex: 1,
+      commentContent: ""
     };
   },
   created() {
@@ -39,8 +40,21 @@ export default {
       this.$http
         .get("api/getcomments/" + this.id + "?pageindex=" + this.pageindex)
         .then(res => {
-            console.log(res.body)
           this.commentList = this.commentList.concat(res.body.message);
+        });
+    },
+    //提交评论
+    postComment() {
+      this.$http
+        .post("api/postcomment/" + this.id, {
+          content: this.commentContent
+        })
+        .then(res => {
+          this.$toast(res.body.message);
+          this.pageindex = 1;
+          this.commentList = [];
+          this.getCommentList();
+          this.commentContent = '';
         });
     }
   },
@@ -52,7 +66,7 @@ export default {
 
 <style lang="less" scoped>
 .template {
-    padding: 5px 0;
+  padding: 5px 0;
   .comment-title {
     font-size: 18px;
     font-weight: 700;
