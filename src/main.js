@@ -32,9 +32,9 @@ Vue.http.options.root = 'http://lovegf.cn:8899/';
 import comment from './components/comment'
 //定义全局评论组件
 Vue.component('comment', comment)
-// Vue.component('comment-box',{
-//   component:comment
-// });
+
+import VuePreview from 'vue-pic-preview'
+Vue.use(VuePreview)
 
 Vue.config.productionTip = false
 

@@ -17,7 +17,9 @@
     <div class="img-center">
       <ul>
         <li v-for="item in imgList" :key="item.id">
-          <img alt v-lazy="item.img_url">
+          <router-link :to="'/home/imgInfo/'+ item.id" >
+            <img alt v-lazy="item.img_url">
+          </router-link>
           <div class="text-center">
             <h2>{{item.title}}</h2>
             <div class="text-body">{{item.zhaiyao}}</div>
@@ -59,11 +61,9 @@ export default {
     //获取图文
     getImgList(id) {
       this.$http.get("api/getimages/" + id).then(res => {
-        console.log(res);
         this.imgList = res.body.message;
       });
-    },
-    //点击获取不同的图
+    }
   }
 };
 </script>
