@@ -23,7 +23,7 @@ Vue.use(vueResource)
 import moment from 'moment'
 // 全局过滤器处理时间
 Vue.filter('getTime', (data, options = 'YYYY-MM-DD hh-mm-ss') => {
-  return moment().format(options)
+  return moment(data).format(options)
 })
 
 Vue.http.options.root = 'http://lovegf.cn:8899/';

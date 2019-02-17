@@ -20,7 +20,6 @@ export default {
     //获取图文信息
     getDesc() {
       this.$http.get("api/goods/getdesc/" + this.id).then(res => {
-        console.log(res.body.message[0]);
         this.desc = res.body.message[0];
       });
     }

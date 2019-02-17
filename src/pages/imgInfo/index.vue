@@ -12,7 +12,8 @@
     <!-- 图片缩略图 -->
     <div class="thumbs">
       <img class="preview-img" v-for="(item, index) in imgList"
-      :src="item.src" height="100" @click="$preview.open(index, imgList)"
+      :src="item.src" height="100"
+      @click="$preview.open(index, imgList)"
       :key="item.src"
       >
     </div>
@@ -46,7 +47,10 @@ export default {
     //获取缩略图
     getImgList() {
       this.$http.get("api/getthumimages/" + this.id).then(res => {
-        console.log(res);
+        res.body.message.forEach(item => {
+          item.w = 600;
+          item.h = 400;
+        });
         this.imgList = res.body.message;
       });
     }

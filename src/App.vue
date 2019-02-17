@@ -6,7 +6,7 @@
         <mt-button icon="back" @click="back" v-show="isshow">返回</mt-button>
       </span>
     </mt-header>
-    <transition>
+    <transition name="app">
       <router-view/>
     </transition>
     <!-- 底部 -->
@@ -60,20 +60,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.v-enter {
+.app-enter {
   opacity: 0;
   transform: translateX(100%);
 }
 
-.v-leave-to {
+.app-leave-to {
   opacity: 0;
   transform: translateX(-100%);
 }
-.v-enter-active,
-.v-leave-active {
+.app-enter-active,
+.app-leave-active {
   transition: all 0.5s ease-in-out;
 }
-.v-leave-active {
+.app-leave-active {
   position: absolute;
 }
 #app {

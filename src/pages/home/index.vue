@@ -58,7 +58,6 @@ export default {
   methods: {
     getBanner() {
       this.$http.get("api/getlunbo").then(res => {
-        console.log(res.body);
         this.bannerImgs = res.body.message;
       });
     }

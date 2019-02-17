@@ -32,7 +32,7 @@
           </div>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
-            <mt-button type="danger" size="small" @click="ballFlag = !ballFlag">加入购物车</mt-button>
+            <mt-button type="danger" :disabled="isballFlag" size="small" @click="ballFlag = !ballFlag">加入购物车</mt-button>
           </p>
         </div>
       </div>
@@ -60,6 +60,7 @@ export default {
   data() {
     return {
       ballFlag: false,
+      isballFlag: false,
       num: 1,
       id: this.$route.params.id,
       goodsInfo: {},
@@ -79,11 +80,14 @@ export default {
     //获取商品详情轮播图
     getGoodsBanner() {
       this.$http.get("api/getthumimages/" + this.id).then(res => {
-        console.log(res);
         this.goodsBanner = res.body.message;
       });
     },
     beforeEnter(el) {
+      this.isballFlag = !this.isballFlag;
+      setTimeout(() => {
+        this.isballFlag = !this.isballFlag;
+      }, 600);
       el.style.transform = "translate(0, 0)";
     },
     enter(el, done) {
@@ -103,11 +107,11 @@ export default {
     afterEnter() {
       this.ballFlag = !this.ballFlag;
     },
-    goGoodsDesc(id){
-      this.$router.push('/home/goodsDesc/'+id)
+    goGoodsDesc(id) {
+      this.$router.push("/home/goodsDesc/" + id);
     },
-    goGoodsCom(id){
-      this.$router.push('/home/goodsCom/'+id)
+    goGoodsCom(id) {
+      this.$router.push("/home/goodsCom/" + id);
     }
   }
 };
