@@ -28,10 +28,13 @@ Vue.filter('getTime', (data, options = 'YYYY-MM-DD hh-mm-ss') => {
 
 Vue.http.options.root = 'http://lovegf.cn:8899/';
 
-
-import comment from './components/comment'
 //定义全局评论组件
+import comment from './components/comment'
 Vue.component('comment', comment)
+
+//定义全局轮播图组件
+import banner from './components/banner'
+Vue.component('banner', banner)
 
 import VuePreview from 'vue-pic-preview'
 Vue.use(VuePreview)

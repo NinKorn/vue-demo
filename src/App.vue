@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <!-- 头部 -->
-    <mt-header fixed title="Vue商城项目"></mt-header>
+    <mt-header fixed title="Vue商城项目">
+      <span slot="left" class="back">
+        <mt-button icon="back" @click="back" v-show="isshow">返回</mt-button>
+      </span>
+    </mt-header>
     <transition>
       <router-view/>
     </transition>
@@ -17,7 +21,7 @@
       </router-link>
       <router-link to="/shopcar" class="mui-tab-item1">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge">0</span>
+          <span class="mui-badge" id="badge">0</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -31,8 +35,28 @@
 
 <script>
 export default {
-  name: "App"
-};
+  data() {
+    return {
+      isshow:false
+    }
+  },
+  created() {},
+  methods: {
+    back(){
+      history.go(-1);
+    }
+  },
+  watch: {
+    '$route' (to,from){
+      if(to.path == '/home'){
+        this.isshow= false;
+      }else{
+        this.isshow= true;
+      }
+    }
+  },
+
+}
 </script>
 
 <style lang="less" scoped>
