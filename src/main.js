@@ -19,6 +19,10 @@ Vue.use(MintUI) // 把所有的组件，注册为全局的组件
 import vueResource from 'vue-resource'
 Vue.use(vueResource)
 
+// 引入vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
 //引入moment时间处理插件
 import moment from 'moment'
 // 全局过滤器处理时间
@@ -41,9 +45,20 @@ Vue.use(VuePreview)
 
 Vue.config.productionTip = false
 
+const store = new Vuex.Store({
+  state:{
+    count:1
+  },
+  mutations:{
+    
+  },
+  getters:{}
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
